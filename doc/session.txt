@@ -30,16 +30,17 @@ Contents ~
   10. The |g:session_autosave_to| option
   11. The |g:session_autosave_periodic| option
   12. The |g:session_autosave_silent| option
-  13. The |g:session_verbose_messages| option
-  14. The |g:session_default_to_last| option
-  15. The |g:session_persist_font| option
-  16. The |g:session_persist_colors| option
-  17. The |g:session_persist_globals| option
-  18. The |g:session_restart_environment| option
-  19. The |g:session_command_aliases| option
-  20. The |g:session_menu| option
-  21. The |g:session_name_suggestion_function| option
-  22. The |g:loaded_session| option
+  13. The |g:session_autosave_only_with_explicit_session| option
+  14. The |g:session_verbose_messages| option
+  16. The |g:session_default_to_last| option
+  16. The |g:session_persist_font| option
+  17. The |g:session_persist_colors| option
+  18. The |g:session_persist_globals| option
+  19. The |g:session_restart_environment| option
+  20. The |g:session_command_aliases| option
+  21. The |g:session_menu| option
+  22. The |g:session_name_suggestion_function| option
+  23. The |g:loaded_session| option
  5. Compatibility with other plug-ins |session-compatibility-with-other-plug-ins|
  6. Function reference                             |session-function-reference|
   1. Public API for the vim-session plug-in |public-api-for-vim-session-plug-in|
@@ -105,6 +106,10 @@ without editing any files and the default session exists, you'll be prompted
 whether you want to restore the default session:
 
   Image: Screenshot of auto-open prompt (see reference [2])
+
+Additionally, the plug-in can optionally (see
+|g:session_autosave_only_with_explicit_session| option) only prompt to save
+the session if there is an existing session loaded.
 
 When you start Vim with a custom server name (see |--servername|) that matches
 one of the existing session names then the matching session will be
@@ -394,6 +399,13 @@ The *g:session_autosave_silent* option
 
 If you set this option to true (1) the messages normally emitted by automatic,
 periodic saving of active sessions are silenced.
+
+-------------------------------------------------------------------------------
+The *g:session_autosave_only_with_explicit_session* option
+
+If you set this option to true (1) and |g:session_autosave| is set to
+"'prompt'" then the plug-in will only prompt you on whether or not you want to
+save the session if there is actually an existing session open.
 
 -------------------------------------------------------------------------------
 The *g:session_verbose_messages* option
